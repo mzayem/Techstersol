@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/utopiant/techstersol.com/
+    - /bin/cp -R images $DEPLOYPATH
