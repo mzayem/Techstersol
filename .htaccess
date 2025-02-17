@@ -6,12 +6,6 @@ Options -Indexes
     RewriteEngine On
 </IfModule>
 
-# Prevent direct access to images, CSS, and JS
-<FilesMatch "\.(jpg|jpeg|png|gif|webp|css|js)$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
-
 # Allow access only from your domain (Prevents hotlinking)
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTP_REFERER} !^https://(www\.)?techstersol\.com [NC]
