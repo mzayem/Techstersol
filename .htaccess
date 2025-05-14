@@ -1,0 +1,14 @@
+# Disable directory listing (prevents browsing folders)
+Options -Indexes
+
+# Enable RewriteEngine if supported
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>
+
+# Allow access only from your domain (Prevents hotlinking)
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_REFERER} !^https://(www\.)?techstersol\.com [NC]
+    RewriteRule \.(jpg|jpeg|png|gif|webp|css|js)$ - [F,NC]
+</IfModule>
+
