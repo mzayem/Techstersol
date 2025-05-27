@@ -36,7 +36,7 @@ if ($con->connect_error) {
 // Use prepared statement to prevent SQL injection
 $stmt = $con->prepare("INSERT INTO contactform (name, subject, email, message) VALUES (?, ?, ?, ?)");
 if (!$stmt) {
-    header("Location: contact.html?error=1");
+    header("Location: https://techstersol.com?error=1");
     exit;
 }
 $stmt->bind_param("ssss", $name, $subject, $email, $message);
@@ -45,13 +45,13 @@ $stmt->close();
 $con->close();
 
 // Compose email
-$email_from = 'admin@techstersol.com';
+$email_from = 'zayem@techstersol.com';
 $email_subject = "New Form Submission from Techstersol";
 $email_body = "You have received a new message:\n\n" .
               "Name: $name\n" .
               "Subject: $subject\n" .
               "Email: $email\n\n" .
-              "Message:\n$message";
+              "Message:\n$message";s
 
 $to = "mzayemazam@gmail.com";
 $headers = "From: $email_from\r\n";
@@ -61,6 +61,6 @@ $headers .= "Reply-To: $email\r\n";
 mail($to, $email_subject, $email_body, $headers);
 
 // Redirect with success
-header("Location: contact.html?success=1");
+header("Location: https://techstersol.com?success=1");
 exit;
 ?>
