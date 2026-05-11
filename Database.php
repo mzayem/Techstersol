@@ -1,17 +1,26 @@
 <?php
-// Enable error reporting for development (disable in production)
+
+// Show errors (disable in production)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Get and sanitize input
+// PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'src/Exception.php';
+require 'src/PHPMailer.php';
+require 'src/SMTP.php';
+
+// Get form data
 $name = trim($_POST['name'] ?? '');
 $subject = trim($_POST['subject'] ?? '');
 $email = trim($_POST['email'] ?? '');
 $message = trim($_POST['message'] ?? '');
 $honeypot = $_POST['website'] ?? '';
 
-// Check for honeypot (spam bots), empty fields, short values
+// Validation
 if (
     $honeypot !== '' ||
     empty($name) || strlen($name) < 2 ||
@@ -23,40 +32,70 @@ if (
     exit;
 }
 
-// DB connection credentials
+// Database credentials
 $host = "localhost";
 $username = "u563786655_tech";
 $password = "Techstersol789@";
 $dbname = "u563786655_tech";
 
-// Connect to DB
+// Connect DB
 $con = new mysqli($host, $username, $password, $dbname);
 
 if ($con->connect_error) {
-    header("Location: https://techstersol.com?error=1");
-    exit;
+    die("Database connection failed");
 }
 
-// Prepared statement to prevent SQL injection
+// Insert into database
 $stmt = $con->prepare("INSERT INTO contactform (name, subject, email, message) VALUES (?, ?, ?, ?)");
 $stmt->bind_param("ssss", $name, $subject, $email, $message);
 
 if ($stmt->execute()) {
-    // Email notification
-    $email_from = 'admin@techstersol.com';
-    $email_subject = "New Form submission from Techstersol";
-    $email_body = "You have received a new message from $name.\n\nSubject: $subject\nEmail: $email\n\nMessage:\n$message";
-    $to = "mzayemazam@gmail.com";
-    $headers = "From: $email_from\r\nReply-To: $email\r\n";
 
-    mail($to, $email_subject, $email_body, $headers);
+    $mail = new PHPMailer(true);
 
-    header("Location: https://techstersol.com?success=1");
+    try {
+
+        // SMTP Settings
+        $mail->isSMTP();
+        $mail->Host = 'smtp.hostinger.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'info@techstersol.com';
+        $mail->Password = 'Z1a@y3e4m789@';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Sender
+        $mail->setFrom('info@techstersol.com', 'Techstersol');
+
+        // Receiver
+        $mail->addAddress('mzayemazam@gmail.com');
+
+        // Email Content
+        $mail->isHTML(false);
+        $mail->Subject = "New Contact Form Submission";
+
+        $mail->Body =
+            "Name: $name\n\n" .
+            "Subject: $subject\n\n" .
+            "Email: $email\n\n" .
+            "Message:\n$message";
+
+        // Send Email
+        $mail->send();
+
+        header("Location: https://techstersol.com?success=1");
+        exit;
+
+    } catch (Exception $e) {
+
+        header("Location: https://techstersol.com?error=1");
+    }
+
 } else {
-    header("Location: https://techstersol.com?error=1");
+        header("Location: https://techstersol.com?error=1");
 }
 
 $stmt->close();
 $con->close();
-exit;
+
 ?>
