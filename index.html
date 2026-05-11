@@ -1,685 +1,1490 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
   <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./assets/images/icon.png">
-
-    <title>Techstersol</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-onix-digital.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Techstersol — Full-Stack IT Solutions: Web Apps, Mobile Apps, AI Bots, Data Engineering, ASP.NET, Next.js & SEO"
+    />
+    <title>Techstersol — Full-Stack IT Solutions</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/images/icon.png" />
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   </head>
+  <body>
+    <!-- ── CURSOR ── -->
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
 
-<body>
+    <!-- ── SCROLL PROGRESS ── -->
+    <div id="progress-bar"></div>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+    <!-- ══════════════ LOADER ══════════════ -->
+    <div id="loader">
+      <div class="loader-word"><span>TECHSTERSOL</span></div>
+      <div class="loader-line">
+        <div class="loader-line-fill" id="loader-fill"></div>
       </div>
+      <div class="loader-count" id="loader-count">0%</div>
     </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="assets/images/logo.png" height="44">
+    <!-- ══════════════ HEADER ══════════════ -->
+    <header id="site-header" style="opacity: 0">
+      <a href="#hero" class="nav-logo">
+        <img
+          src="assets/images/logo.png"
+          alt="Techstersol"
+          onerror="
+            this.style.display = 'none';
+            this.nextElementSibling.style.display = 'block';
+          "
+        />
+        <span class="logo-fallback">TECHSTERSOL</span>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <a href="#hero" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 14px">
+        <div class="nav-cta">
+          <a href="#contact">
+            Start Project
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 14 14"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 7h10M8 3l4 4-4 4"
+                stroke="#fff"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+        </div>
+        <div class="burger" id="burger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════ HERO ══════════════ -->
+    <section id="hero">
+      <div class="hero-dots"></div>
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+      <div class="glow glow-3"></div>
+
+      <div class="hero-grid">
+        <!-- LEFT -->
+        <div class="hero-left" id="hero-left">
+          <div class="hero-eyebrow" id="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            Full-Stack Digital Studio
+          </div>
+
+          <h1 class="hero-h1" id="hero-h1">
+            We Build<br />
+            <em>Digital Experiences</em><br />
+            That Move People
+          </h1>
+
+          <p class="hero-sub" id="hero-sub">
+            From web &amp; mobile apps to AI automation and data engineering —
+            Techstersol crafts technology that scales with your ambition.
+          </p>
+
+          <div class="hero-ctas" id="hero-ctas">
+            <a href="#contact" class="btn-primary">
+              Start Project
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 7h10M8 3l4 4-4 4"
+                  stroke="#fff"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
             </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
-              <li class="scroll-to-section"><div class="main-red-button-hover"><a href="#contact">Contact Us Now</a></div></li>
-            </ul>
-            <a class='menu-trigger'>
-                <span>Menu</span>
+            <a href="#portfolio" class="btn-secondary">
+              View Work
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M7 2l5 5-5 5M2 7h10"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
             </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
+          </div>
 
-  <div class="main-banner" id="top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="owl-carousel owl-banner">
-                <div class="item header-text">
-                  <h6>Welcome to Techstesol</h6>
-                  <h2>Build <em>your website</em> the best in <span>SEO</span>?</h2>
-                  <p>We use the latest web development technologies to create websites that will help you achieve your business goals.</p>
-                  <div class="down-buttons">
-                    <div class="main-blue-button-hover" style="margin-bottom: 20px;">
-                      <a href="https://wa.me/923066940981">Message Us Now</a>
-                    </div>
-                    <div class="call-button">
-                      <a href="tel:+923066940981"><i class="fa fa-phone"></i>+(92)306-694-0981</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item header-text">
-                  <h6>Online Marketing</h6>
-                  <h2>Get the <em>best ideas</em> for <span>your company</span></h2>
-                  <p>We offer a wide range of web development services, including custom website design, development, and hosting.</p>
-                  <div class="down-buttons">
-                    <div class="main-blue-button-hover" style="margin-bottom: 20px;">
-                      <a href="#services">Our Services</a>
-                    </div>
-                    <div class="call-button" >
-                      <a href="tel:+923066940981"><i class="fa fa-phone"></i> +(92)306-694-0981</a>
-                    </div>
-                  </div>
-                </div>
+          <div class="hero-stats" id="hero-stats">
+            <div class="hst">
+              <span class="hst-n" data-target="4">0</span
+              ><span class="hst-n-suf">+</span>
+              <div class="hst-l">Years Experience</div>
+            </div>
+            <div class="hst">
+              <span class="hst-n" data-target="300">0</span
+              ><span class="hst-n-suf">+</span>
+              <div class="hst-l">Projects Shipped</div>
+            </div>
+            <div class="hst">
+              <span class="hst-n" data-target="400">0</span
+              ><span class="hst-n-suf">+</span>
+              <div class="hst-l">Happy Clients</div>
+            </div>
+          </div>
+        </div>
 
-              </div>
-            </div>
+        <!-- RIGHT — Three.js -->
+        <div class="hero-right" id="hero-right">
+          <canvas id="three-canvas"></canvas>
+          <div class="float-chip chip-a">
+            <span class="chip-val">9+</span>
+            <span class="chip-lbl">Services</span>
+          </div>
+          <div class="float-chip chip-b">
+            <span class="chip-val">300+</span>
+            <span class="chip-lbl">Projects Done</span>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div id="services" class="our-services section">
-    <div class="services-right-dec">
-      <img src="assets/images/services-right-dec.png" alt="">
-    </div>
-    <div class="container">
-      <div class="services-left-dec">
-        <img src="assets/images/services-left-dec.png" alt="">
+      <div class="scroll-hint" id="scroll-hint">
+        <div class="scroll-line"></div>
+        <span class="scroll-text">Scroll</span>
       </div>
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading">
-            <h2>We <em>Provide</em> The Best Service With <span>Our Tools</span></h2>
-            <span>Our Services</span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-carousel owl-services">
-            <div class="item">
-              <h4>Build an E-commerce Store </h4>
-              <div class="icon"><img src="assets/images/service-icon-01.png" alt=""></div>
-              <p>We can build an online store to sell your products or services.</p>
-            </div>
-            <div class="item">
-              <h4>UI / UX Design and Development</h4>
-              <div class="icon"><img src="assets/images/service-icon-03.png" alt=""></div>
-              <p>We create custom website designs that reflect your brand.</p>
-            </div>
-            <div class="item">
-              <h4>Discover &amp; Explore our SEO Tips</h4>
-              <div class="icon"><img src="assets/images/service-icon-04.png" alt=""></div>
-              <p>We can help your website rank higher in search engines.</p>
-            </div>
-            <div class="item">
-              <h4>Optimizing your websites for Speed</h4>
-              <div class="icon"><img src="assets/images/service-icon-01.png" alt=""></div>
-              <p>We maintain your website and keep it up-to-date.</p>
-            </div>
-            <div class="item">
-              <h4>Best Content Desgins for your pages</h4>
-              <div class="icon"><img src="assets/images/service-icon-03.png" alt=""></div>
-              <p>Design your content in a way that is visually appealing and easy to read.</p>
-            </div>
-            <div class="item">
-              <h4>Accessibility for mobile viewing</h4>
-              <div class="icon"><img src="assets/images/service-icon-01.png" alt=""></div>
-              <p>Our website designs are fully responsive and user-friendly.</p>
-            </div>
-            <div class="item">
-              <h4>Startup Ideas for your next project</h4>
-              <div class="icon"><img src="assets/images/service-icon-02.png" alt=""></div>
-              <p>Contact us to discuss about your upcomming plans.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="about" class="about-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 align-self-center">
-          <div class="left-image">
-            <img src="assets/images/about-left-image.png" alt="Two Girls working together">
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="section-heading">
-            <h2>We are the <em>web development</em> &amp; <span>company</span> that makes your business stand out.</h2>
-            <p>We understand that every business is different, and we tailor our web development services to meet the unique needs of each of our clients. We work with you to understand your goals and objectives, and we create a website that is designed to help you achieve them.</p>
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="fact-item">
-                  <div class="count-area-content">
-                    <div class="icon">
-                      <img src="assets/images/service-icon-01.png" alt="">
-                    </div>
-                    <div class="count-digit">4+</div>
-                    <div class="count-title">Exprience</div>
-                    <p>Over 3 years of experience in developing.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="fact-item">
-                  <div class="count-area-content">
-                    <div class="icon">
-                      <img src="assets/images/service-icon-02.png" alt="">
-                    </div>
-                    <div class="count-digit">300+</div>
-                    <div class="count-title">Websites</div>
-                    <p>We completed more then 50 website projects.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="fact-item">
-                  <div class="count-area-content">
-                    <div class="icon">
-                      <img src="assets/images/service-icon-03.png" alt="">
-                    </div>
-                    <div class="count-digit">400+</div>
-                    <div class="count-title">Satisfied Clients</div>
-                    <p>We are proud to have such a loyal and satisfied Clients.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- ══════════════ MARQUEE ══════════════ -->
+    <div class="marq-wrap">
+      <div class="marq-track">
+        <span class="marq-item"><span class="marq-sep"></span>Next.js</span>
+        <span class="marq-item"
+          ><span class="marq-sep"></span>React Native</span
+        >
+        <span class="marq-item"
+          ><span class="marq-sep"></span>ASP.NET Core</span
+        >
+        <span class="marq-item"><span class="marq-sep"></span>Flutter</span>
+        <span class="marq-item"
+          ><span class="marq-sep"></span>Python · Django</span
+        >
+        <span class="marq-item"
+          ><span class="marq-sep"></span>OpenAI GPT-4</span
+        >
+        <span class="marq-item"><span class="marq-sep"></span>AWS · Azure</span>
+        <span class="marq-item"
+          ><span class="marq-sep"></span>Data Engineering</span
+        >
+        <span class="marq-item"
+          ><span class="marq-sep"></span>Apache Spark</span
+        >
+        <span class="marq-item"><span class="marq-sep"></span>TypeScript</span>
+        <span class="marq-item"><span class="marq-sep"></span>Next.js</span>
+        <span class="marq-item"
+          ><span class="marq-sep"></span>React Native</span
+        >
+        <span class="marq-item"
+          ><span class="marq-sep"></span>ASP.NET Core</span
+        >
+        <span class="marq-item"><span class="marq-sep"></span>Flutter</span>
+        <span class="marq-item"
+          ><span class="marq-sep"></span>Python · Django</span
+        >
+        <span class="marq-item"
+          ><span class="marq-sep"></span>OpenAI GPT-4</span
+        >
+        <span class="marq-item"><span class="marq-sep"></span>AWS · Azure</span>
+        <span class="marq-item"
+          ><span class="marq-sep"></span>Data Engineering</span
+        >
+        <span class="marq-item"
+          ><span class="marq-sep"></span>Apache Spark</span
+        >
+        <span class="marq-item"><span class="marq-sep"></span>TypeScript</span>
       </div>
     </div>
-  </div>
 
-  <div id="portfolio" class="our-portfolio section">
-    <div class="portfolio-left-dec">
-      <img src="assets/images/portfolio-left-dec.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading">
-            <h2>Our Recentt <em>Projects</em> &amp; Case Studies <span>for Clients</span></h2>
-            <span>Our Portfolio</span>
+    <!-- ══════════════ SERVICES ══════════════ -->
+    <div id="services">
+      <div class="svc-header sa">
+        <div class="tag">What We Build</div>
+        <h2 class="s-title">Our <em>Core</em> Services</h2>
+        <p class="s-sub">
+          End-to-end technology solutions across web, mobile, AI, and data
+          platforms.
+        </p>
+      </div>
+      <div class="svc-track-outer">
+        <div class="svc-track" id="svc-track">
+          <div class="svc-slide">
+            <span class="svc-slide-num">01</span>
+            <div class="svc-icon-box si-a"><i class="fa fa-globe"></i></div>
+            <h3>Web App Development</h3>
+            <p>
+              Full-stack web apps with React, Next.js, ASP.NET and Django — from
+              landing pages to enterprise SaaS.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">02</span>
+            <div class="svc-icon-box si-b"><i class="fa fa-mobile"></i></div>
+            <h3>Mobile Apps</h3>
+            <p>
+              Native and cross-platform iOS &amp; Android apps built with
+              Flutter and React Native.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">03</span>
+            <div class="svc-icon-box si-c"><i class="fa fa-desktop"></i></div>
+            <h3>Desktop Software</h3>
+            <p>
+              Robust enterprise desktop applications on .NET — WPF, MAUI, and C#
+              solutions.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">04</span>
+            <div class="svc-icon-box si-a"><i class="fa fa-database"></i></div>
+            <h3>Data Engineering</h3>
+            <p>
+              End-to-end data pipelines, ETL, warehousing and BI dashboards that
+              turn raw data into decisions.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">05</span>
+            <div class="svc-icon-box si-b"><i class="fa fa-rocket"></i></div>
+            <h3>AI Bots &amp; Automation</h3>
+            <p>
+              Custom AI chatbots and intelligent agents powered by OpenAI,
+              LangChain and custom ML models.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">06</span>
+            <div class="svc-icon-box si-c">
+              <i class="fa fa-line-chart"></i>
+            </div>
+            <h3>SEO &amp; Growth</h3>
+            <p>
+              Technical SEO audits, Core Web Vitals and content strategy to rank
+              higher and convert more.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">07</span>
+            <div class="svc-icon-box si-a">
+              <i class="fa fa-paint-brush"></i>
+            </div>
+            <h3>UI / UX Design</h3>
+            <p>
+              Research-backed Figma prototypes and design systems translated
+              pixel-perfectly into code.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">08</span>
+            <div class="svc-icon-box si-b">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+            <h3>E-Commerce</h3>
+            <p>
+              Custom online stores via Shopify, WooCommerce, or fully bespoke
+              systems with payments &amp; inventory.
+            </p>
+          </div>
+          <div class="svc-slide">
+            <span class="svc-slide-num">09</span>
+            <div class="svc-icon-box si-c"><i class="fa fa-cloud"></i></div>
+            <h3>Cloud &amp; DevOps</h3>
+            <p>
+              CI/CD pipelines, containerised deployments, AWS/Azure
+              infrastructure at scale.
+            </p>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-carousel owl-portfolio">
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/arestimation.webp" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a rel="sponsored" href="https://arestimation.com/" target="_parent"><h4>Arestimation</h4></a>
-                    <span>Construction estimation</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/upfirepro.webp" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Upfirepro</h4></a>
-                    <span>IT &amp; Services provider</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/Utopiantakeoff.webp" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a rel="sponsored" href="https://utopiantakeoffs.com/" target="_parent"><h4>Arestimation</h4></a>
-                    <span>Construction estimation website </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/Asmic.webp" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Asmic Store</h4></a>
-                    <span>Eccomerce Store</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/Archstone.webp" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Archstone Marketing</h4></a>
-                    <span>Real Estate</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/Arzsell.webp" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Arzsell Store</h4></a>
-                    <span>Online &amp; Store</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="assets/images/Comprepairct.webp" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#"><h4>Comprepairct</h4></a>
-                    <span>Computer &amp; Repair services</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div id="pricing" class="pricing-tables">
-    <div class="tables-left-dec">
-      <img src="assets/images/tables-left-dec.png" alt="">
-    </div>
-    <div class="tables-right-dec">
-      <img src="assets/images/tables-right-dec.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading">
-            <h2>Select a suitable <em>plan</em> for your next <span>projects</span></h2>
-            <span>Our Plans</span>
+    <!-- ══════════════ ABOUT ══════════════ -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual sa fl">
+            <div class="tilt-card" id="tilt-card">
+              <img
+                src="assets/images/about-left-image.png"
+                alt="Techstersol Team"
+                id="about-img"
+                onerror="
+                  this.src =
+                    'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22460%22%3E%3Crect width=%22600%22 height=%22460%22 fill=%22%23131316%22/%3E%3Ctext x=%22300%22 y=%22230%22 text-anchor=%22middle%22 fill=%22%23333%22 font-size=%2222%22 font-family=%22sans-serif%22%3ETechstersol Team%3C/text%3E%3C/svg%3E'
+                "
+              />
+              <div class="tilt-overlay"></div>
+              <div class="tilt-shine" id="tilt-shine"></div>
+            </div>
+            <div class="afl afl-1">
+              <div class="afl-n">400+</div>
+              <div class="afl-l">Clients Worldwide</div>
+            </div>
+            <div class="afl afl-2">
+              <div class="afl-n">4+</div>
+              <div class="afl-l">Years in IT</div>
+            </div>
+          </div>
+          <div class="about-copy sa fr d2">
+            <div class="tag">Who We Are</div>
+            <h2 class="s-title">
+              We Are a <em>Full-Stack IT</em> Innovation Studio
+            </h2>
+            <p style="font-size: 15.5px">
+              Techstersol is a results-driven technology studio based in
+              Bahawalpur. We combine deep technical expertise with strategic
+              thinking to build software products that solve real problems and
+              grow with your business.
+            </p>
+            <p>
+              From early-stage startups to growing enterprises, we tailor every
+              solution to your unique goals — on time, on budget, and built to
+              last. No templates, no copy-paste — only purpose-built technology.
+            </p>
+            <div class="stat-chips">
+              <div class="stat-chip">
+                <div class="chip-n" data-val="300">0</div>
+                <div class="chip-l">Projects</div>
+              </div>
+              <div class="stat-chip">
+                <div class="chip-n" data-val="400">0</div>
+                <div class="chip-l">Clients</div>
+              </div>
+              <div class="stat-chip">
+                <div class="chip-n" data-val="9">0</div>
+                <div class="chip-l">Services</div>
+              </div>
+            </div>
+            <div style="margin-top: 32px">
+              <a href="#contact" class="btn-grad"
+                >Start a Project <i class="fa fa-arrow-right"></i
+              ></a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="item first-item">
-            <h4>Starter Plan</h4>
-            <em>$100</em>
-            <span>$70</span>
-            <ul>
-              <li>5 Pages</li>
-              <li>professional Website</li>
-              <li>Contact Form</li>
-              <li>Domain Setup</li>
+    </section>
+
+    <!-- ══════════════ PORTFOLIO ══════════════ -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div class="center sa">
+          <div class="tag">Our Work</div>
+          <h2 class="s-title">Recent <em>Projects</em> &amp; Case Studies</h2>
+          <p class="s-sub">
+            A selection of work across industries — from construction tech to
+            e-commerce and beyond.
+          </p>
+        </div>
+        <div class="port-grid">
+          <div class="port-item p1 pb1">
+            <img
+              src="assets/images/arestimation.webp"
+              alt="Arestimation"
+              class="port-img"
+            />
+            <div class="port-ov">
+              <h4>Arestimation</h4>
+              <span>Construction Estimation Platform</span>
+            </div>
+            <a href="https://arestimation.com/" target="_blank" class="port-arr"
+              ><i class="fa fa-external-link"></i
+            ></a>
+            <div class="port-num">01</div>
+          </div>
+          <div class="port-item p2 pb2">
+            <img
+              src="assets/images/upfirepro.webp"
+              alt="Upfirepro"
+              class="port-img"
+            />
+            <div class="port-ov">
+              <h4>Upfirepro</h4>
+              <span>IT Services Provider</span>
+            </div>
+            <div class="port-arr"><i class="fa fa-external-link"></i></div>
+            <div class="port-num">02</div>
+          </div>
+          <div class="port-item p3 pb3">
+            <img
+              src="assets/images/Utopiantakeoff.webp"
+              alt="Utopian Takeoffs"
+              class="port-img"
+            />
+            <div class="port-ov">
+              <h4>Utopian Takeoffs</h4>
+              <span>Construction Estimation</span>
+            </div>
+            <a
+              href="https://utopiantakeoffs.com/"
+              target="_blank"
+              class="port-arr"
+              ><i class="fa fa-external-link"></i
+            ></a>
+            <div class="port-num">03</div>
+          </div>
+          <div class="port-item p4 pb4">
+            <img
+              src="assets/images/Asmic.webp"
+              alt="Asmic Store"
+              class="port-img"
+            />
+            <div class="port-ov">
+              <h4>Asmic Store</h4>
+              <span>E-Commerce Platform</span>
+            </div>
+            <div class="port-arr"><i class="fa fa-external-link"></i></div>
+            <div class="port-num">04</div>
+          </div>
+          <div class="port-item p5 pb5">
+            <img
+              src="assets/images/Archstone.webp"
+              alt="Archstone"
+              class="port-img"
+            />
+            <div class="port-ov">
+              <h4>Archstone Marketing</h4>
+              <span>Real Estate</span>
+            </div>
+            <div class="port-arr"><i class="fa fa-external-link"></i></div>
+            <div class="port-num">05</div>
+          </div>
+          <div class="port-item p6 pb6">
+            <img
+              src="assets/images/Comprepairct.webp"
+              alt="Comprepairct"
+              class="port-img"
+            />
+            <div class="port-ov">
+              <h4>Comprepairct</h4>
+              <span>Computer Repair Services</span>
+            </div>
+            <div class="port-arr"><i class="fa fa-external-link"></i></div>
+            <div class="port-num">06</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ PROCESS ══════════════ -->
+    <section id="process" class="section" style="background: var(--bg2)">
+      <div class="container">
+        <div class="center sa">
+          <div class="tag">Our Process</div>
+          <h2 class="s-title">How We <em>Deliver</em> Excellence</h2>
+          <p class="s-sub">
+            A proven 4-step process that keeps you in control from day one to
+            delivery and beyond.
+          </p>
+        </div>
+        <div class="proc-row">
+          <div class="proc-step sa d1">
+            <div class="proc-num">01</div>
+            <h4>Discovery &amp; Planning</h4>
+            <p>
+              We deep-dive into your goals, tech needs, and timeline to craft a
+              precise project roadmap.
+            </p>
+          </div>
+          <div class="proc-step sa d2">
+            <div class="proc-num">02</div>
+            <h4>Design &amp; Prototype</h4>
+            <p>
+              Figma wireframes reviewed and approved before a single line of
+              code is written.
+            </p>
+          </div>
+          <div class="proc-step sa d3">
+            <div class="proc-num">03</div>
+            <h4>Build &amp; Test</h4>
+            <p>
+              Agile sprints, code reviews, and rigorous QA ensure your product
+              is fast, secure, bug-free.
+            </p>
+          </div>
+          <div class="proc-step sa d4">
+            <div class="proc-num">04</div>
+            <h4>Launch &amp; Support</h4>
+            <p>
+              We deploy, monitor, and maintain so your product stays healthy and
+              keeps growing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ PRICING ══════════════ -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="center sa">
+          <div class="tag">Investment</div>
+          <h2 class="s-title">Transparent <em>Pricing</em> For Every Stage</h2>
+          <p class="s-sub">
+            No surprises. All plans include dedicated communication, clean code,
+            and full source ownership.
+          </p>
+        </div>
+        <div class="price-grid">
+          <div class="price-card sa d1">
+            <div class="price-type">Starter</div>
+            <h3>Landing Page / Brochure Site</h3>
+            <div>
+              <span class="price-cur">$</span
+              ><span class="price-amount">149</span>
+            </div>
+            <div class="price-note">One-time · Starting from</div>
+            <div class="price-div"></div>
+            <ul class="price-list">
+              <li><i class="fa fa-check"></i>Up to 5 responsive pages</li>
+              <li><i class="fa fa-check"></i>Contact form + spam protection</li>
+              <li><i class="fa fa-check"></i>Domain &amp; hosting setup</li>
+              <li><i class="fa fa-check"></i>Basic on-page SEO</li>
+              <li><i class="fa fa-check"></i>30-day post-launch support</li>
+              <li class="off">
+                <i class="fa fa-times"></i>Custom web application
+              </li>
+              <li class="off"><i class="fa fa-times"></i>Mobile app</li>
             </ul>
-            <div class="main-blue-button-hover">
-              <a href="https://www.upwork.com/services/product/development-it-psd-ai-xd-sketch-figma-to-wordpress-conversion-using-elementor-1674536306384404480?ref=project_share">Get Started</a>
+            <a
+              href="https://wa.me/923066940981"
+              target="_blank"
+              class="price-btn pbo"
+              >Get Started →</a
+            >
+          </div>
+          <div class="price-card featured sa d2">
+            <div class="price-badge">Most Popular</div>
+            <div class="price-type">Business</div>
+            <h3>Full Web or Mobile Application</h3>
+            <div>
+              <span class="price-cur">$</span
+              ><span class="price-amount">599</span>
             </div>
+            <div class="price-note">Starting from · Scoped per project</div>
+            <div class="price-div"></div>
+            <ul class="price-list">
+              <li><i class="fa fa-check"></i>Custom web or mobile app</li>
+              <li><i class="fa fa-check"></i>Next.js / ASP.NET / Flutter</li>
+              <li><i class="fa fa-check"></i>Database &amp; API development</li>
+              <li><i class="fa fa-check"></i>Admin dashboard</li>
+              <li><i class="fa fa-check"></i>Cloud deployment (AWS/Azure)</li>
+              <li><i class="fa fa-check"></i>90-day post-launch support</li>
+              <li><i class="fa fa-check"></i>SEO &amp; performance tuning</li>
+            </ul>
+            <a
+              href="https://wa.me/923066940981"
+              target="_blank"
+              class="price-btn pbf"
+              >Let's Build It →</a
+            >
+          </div>
+          <div class="price-card sa d3">
+            <div class="price-type">Enterprise</div>
+            <h3>AI, Data Engineering &amp; Scale</h3>
+            <div>
+              <span class="price-cur">$</span
+              ><span class="price-amount">999</span>
+            </div>
+            <div class="price-note">Starting from · Custom quote</div>
+            <div class="price-div"></div>
+            <ul class="price-list">
+              <li>
+                <i class="fa fa-check"></i>AI bots &amp; automation systems
+              </li>
+              <li><i class="fa fa-check"></i>Data pipelines &amp; ETL</li>
+              <li><i class="fa fa-check"></i>Full SaaS platform development</li>
+              <li><i class="fa fa-check"></i>Multi-service architecture</li>
+              <li><i class="fa fa-check"></i>DevOps &amp; CI/CD setup</li>
+              <li><i class="fa fa-check"></i>Dedicated project manager</li>
+              <li><i class="fa fa-check"></i>6-month retainer option</li>
+            </ul>
+            <a href="#contact" class="price-btn pbo">Request a Quote →</a>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="item second-item">
-            <h4>Standard Plan</h4>
-            <em>$200</em>
-            <span>$120</span>
-            <ul>
-              <li>10 pages</li>
-              <li>Business Sitee</li>
-              <li>Custom Theme</li>
-              <li>Pro Support</li>
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="https://www.upwork.com/services/product/development-it-psd-ai-xd-sketch-figma-to-wordpress-conversion-using-elementor-1674536306384404480?ref=project_share&tier=1">Get it Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item third-item">
-            <h4>Advanced Plan</h4>
-            <em>$250/mo</em>
-            <span>$200</span>
-            <ul>
-              <li>Eccomerce Store</li>
-              <li>50 Products Upload</li>
-              <li>Free Domain Hosting(value $120)</li>
-              <li>6 month free Support</li>
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="https://www.upwork.com/services/product/development-it-psd-ai-xd-sketch-figma-to-wordpress-conversion-using-elementor-1674536306384404480?ref=project_share&tier=2">Buy Now</a>
-            </div>
-          </div>
+        <p
+          style="
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 26px;
+            font-weight: 300;
+          "
+        >
+          All prices are starting estimates.
+          <a href="#contact" style="color: var(--orange)">Contact us</a> for a
+          free discovery call.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════ HIRE ══════════════ -->
+    <section id="hire">
+      <div class="container">
+        <div class="hire-box sa">
+          <h2>Also on <span class="gt">Upwork</span></h2>
+          <p>
+            Prefer to hire through a trusted freelance platform? Find us on
+            Upwork with a verified track record and client reviews.
+          </p>
+          <img
+            src="assets/images/ZAYEM-WEB.png"
+            alt="Muhammad Zayem"
+            class="hire-avatar"
+            onerror="this.style.display = 'none'"
+          />
+          <div class="hire-name">Muhammad Zayem</div>
+          <p class="hire-role">Full-Stack Developer &amp; IT Consultant</p>
+          <a
+            href="https://www.upwork.com/freelancers/~01cd5e94f0585f10d0"
+            target="_blank"
+            class="btn-grad"
+          >
+            Hire on Upwork <i class="fa fa-external-link"></i>
+          </a>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="subscribe" class="subscribe">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="inner-content">
-            <div class="row">
-              <div class="col-lg-10 offset-lg-1">
-                <h2>Hire me on Upwork</h2>
-                <a href="https://www.upwork.com/freelancers/~01cd5e94f0585f10d0">
-                  <img  class="avatar" src="assets/images/ZAYEM-WEB.png" > 
-                  <p  style="color: antiquewhite; text-align: center; margin-top: 20px; margin-bottom: 20px;">Muhammad Zayem</p>
-                </a> 
-                <div style="text-align: center;"class="main-red-button">
-                <a href="https://www.upwork.com/freelancers/~01cd5e94f0585f10d0">Hire Now</a>
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="sa">
+          <div class="tag">Get in Touch</div>
+          <h2 class="s-title">Let's <em>Build</em> Something Together</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="sa fl">
+            <p class="contact-info" style="display: block">
+              Have a project in mind? Reach out through any channel below or
+              fill the form — we typically respond within 24 hours.
+            </p>
+            <div class="cmethod">
+              <div class="cmethod-icon ci-a">
+                <i class="fa fa-whatsapp"></i>
+              </div>
+              <div>
+                <div class="cmethod-l">WhatsApp / Phone</div>
+                <div class="cmethod-v">
+                  <a href="https://wa.me/923066940981">+92-306-694-0981</a>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--
-  <div id="video" class="our-videos section">
-    <div class="videos-left-dec">
-      <img src="assets/images/videos-left-dec.png" alt="">
-    </div>
-    <div class="videos-right-dec">
-      <img src="assets/images/videos-right-dec.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="naccs">
-            <div class="grid">
-              <div class="row">
-                <div class="col-lg-8">
-                  <ul class="nacc">
-                    <li class="active">
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Project One</h4></a>
-                            <span>SEO &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/RdJBSFpcO4M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Second Project</h4></a>
-                            <span>Advertising &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ZlfAjbQiL78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Project Three</h4></a>
-                            <span>Digital &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/mx1WseE7-0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#"><h4>Fourth Project</h4></a>
-                            <span>SEO &amp; Advertising</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-4">
-                  <div class="menu">
-                    <div class="active">
-                      <div class="thumb">
-                        <img src="assets/images/video-thumb-01.png" alt="">
-                        <div class="inner-content">
-                          <h4>Project One</h4>
-                          <span>SEO &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="assets/images/video-thumb-02.png" alt="">
-                        <div class="inner-content">
-                          <h4>Second Project</h4>
-                          <span>Advertising &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="assets/images/video-thumb-03.png" alt="Marketing">
-                        <div class="inner-content">
-                          <h4>Project Three</h4>
-                          <span>Digital &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="assets/images/video-thumb-04.png" alt="SEO Work">
-                        <div class="inner-content">
-                          <h4>Fourth Project</h4>
-                          <span>SEO &amp; Advertising</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div class="cmethod">
+              <div class="cmethod-icon ci-b">
+                <i class="fa fa-envelope"></i>
+              </div>
+              <div>
+                <div class="cmethod-l">Email</div>
+                <div class="cmethod-v">
+                  <a href="mailto:zayem@techstersol.com"
+                    >zayem@techstersol.com</a
+                  >
                 </div>
               </div>
             </div>
+            <div class="cmethod">
+              <div class="cmethod-icon ci-c">
+                <i class="fa fa-map-marker"></i>
+              </div>
+              <div>
+                <div class="cmethod-l">Location</div>
+                <div class="cmethod-v">Bahawalpur, Punjab, Pakistan</div>
+              </div>
+            </div>
+            <div class="cmap">
+              <iframe
+                src="https://maps.google.com/maps?q=Bahawalpur,+Pakistan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="210"
+                frameborder="0"
+                style="border: 0"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="cform-wrap sa fr d2">
+            <h3>Send a Message</h3>
+            <p>Tell us about your project and we'll get back with a plan.</p>
+            <form action="Database.php" method="post">
+              <input
+                type="text"
+                name="website"
+                class="hp-field"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <div class="frow">
+                <div class="fg">
+                  <label class="flabel">Your Name</label
+                  ><input
+                    type="text"
+                    name="name"
+                    class="finput"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div class="fg">
+                  <label class="flabel">Email</label
+                  ><input
+                    type="email"
+                    name="email"
+                    class="finput"
+                    placeholder="john@company.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="fg">
+                <label class="flabel">Subject / Service Needed</label
+                ><input
+                  type="text"
+                  name="subject"
+                  class="finput"
+                  placeholder="e.g. Mobile App, AI Bot, Data Pipeline..."
+                  required
+                />
+              </div>
+              <div class="fg">
+                <label class="flabel">Your Message</label
+                ><textarea
+                  name="message"
+                  class="finput"
+                  placeholder="Describe your project, goals, timeline, and budget..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="fsubmit">
+                <i class="fa fa-paper-plane"></i> Send Message
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </div>
--->
-  <div id="contact" class="contact-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="section-heading">
-            <h2>Feel free to <em>Contact</em> us via the <span>Form</span></h2>
-            <div id="map">
-              <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Bahawalpur,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-            </div>
-            <div class="info">
-              <span><i class="fa fa-phone"></i> <a href="wa.me/+923066940981">+92-306-6940981</a></span>
-              <span><i class="fa fa-envelope"></i> <a href="mailto:zayem@techstersol.com">zayem@techstersol.com</a></span>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer>
+      <div class="container">
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <img
+              src="assets/images/logo.png"
+              alt="Techstersol"
+              class="foot-logo"
+              onerror="this.style.display = 'none'"
+            />
+            <p>
+              Full-stack IT solutions studio delivering web apps, mobile apps,
+              AI systems &amp; data engineering worldwide.
+            </p>
+            <div class="foot-social">
+              <a href="#" class="soc-link"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="soc-link"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="soc-link"><i class="fa fa-instagram"></i></a>
+              <a
+                href="https://www.upwork.com/freelancers/~01cd5e94f0585f10d0"
+                target="_blank"
+                class="soc-link"
+                ><i class="fa fa-briefcase"></i
+              ></a>
             </div>
           </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <form id="contact" action="Database.php" method="post">
-            <div class="row">
-              <input type="text" name="website" style="display:none;"> <!-- honeypot -->
-
-              <div class="col-lg-12">
-             <fieldset>
-                <input type="text" name="name" id="name" placeholder="Name" required>
-              </fieldset>
-            </div>
-            <div class="col-lg-12">
-              <fieldset>
-                <input type="text" name="subject" id="subject" placeholder="Subject" required>
-              </fieldset>
-            </div>
-            <div class="col-lg-12">
-              <fieldset>
-                <input type="email" name="email" id="email" placeholder="Your Email" required>
-              </fieldset>
-            </div>
-            <div class="col-lg-12">
-              <fieldset>
-                <input type="text" name="message" id="message" placeholder="Your Message" required="">
-              </fieldset>
-            </div>
-            <div class="col-lg-12">
-              <fieldset>
-                <button type="submit" id="form-submit" class="main-button">Submit Request</button>
-              </fieldset>
-            </div>
-            </div>
-          </form>
-
-          
-        </div>
-      </div>
-    </div>
-    <div class="contact-dec">
-      <img src="assets/images/contact-dec.png" alt="">
-    </div>
-    <div class="contact-left-dec">
-      <img src="assets/images/contact-left-dec.png" alt="">
-    </div>
-  </div>
-
-  <div class="footer-dec">
-    <img src="assets/images/footer-dec.png" alt="">
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="about footer-item">
-            <div class="logo-footer">
-              <a href="#"><img src="assets/images/logo.png" alt="Onix Digital TemplateMo"></a>
-            </div>
-            <a href="#">info@techstersol.com</a>
+          <div class="foot-col">
+            <h5>Services</h5>
             <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#services">Web App Development</a></li>
+              <li><a href="#services">Mobile Apps</a></li>
+              <li><a href="#services">AI Bots &amp; Automation</a></li>
+              <li><a href="#services">Data Engineering</a></li>
+              <li><a href="#services">SEO &amp; Growth</a></li>
+              <li><a href="#services">UI / UX Design</a></li>
             </ul>
           </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="services footer-item">
-            <h4>Services</h4>
+          <div class="foot-col">
+            <h5>Company</h5>
             <ul>
-              <li><a href="#contact">Web Development</a></li>
-              <li><a href="#contact">Data Engineering</a></li>
-              <li><a href="#contact">Tech Support</a></li>
-              <li><a href="#contact">Social Media Managment</a></li>
-              
-            </ul>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="community footer-item">
-            <h4>Quick links</h4>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#service">services</a></li>
+              <li><a href="#about">About Us</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#contact">Contact us</a></li>
+              <li><a href="#process">How We Work</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
-        <div class="col-lg-12">
-          <div class="copyright">
-            <p>Copyright © 2023 Techstersol. All Rights Reserved.
-            <br></p>
+          <div class="foot-col">
+            <h5>Contact</h5>
+            <ul>
+              <li><a href="https://wa.me/923066940981">+92-306-694-0981</a></li>
+              <li>
+                <a href="mailto:zayem@techstersol.com">zayem@techstersol.com</a>
+              </li>
+              <li>
+                <a href="mailto:info@techstersol.com">info@techstersol.com</a>
+              </li>
+              <li
+                style="color: var(--muted); font-size: 13px; padding-top: 2px"
+              >
+                Bahawalpur, Punjab, Pakistan
+              </li>
+            </ul>
           </div>
         </div>
+        <div class="foot-bottom">
+          <p>© 2024 Techstersol. All Rights Reserved.</p>
+          <p>
+            Built with <span style="color: var(--orange)">♥</span> by
+            <a href="#">Techstersol</a>
+          </p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
+    <!-- ══════════════════════════════════════════
+     JAVASCRIPT — single unified block
+══════════════════════════════════════════ -->
+    <script>
+      /* ──────────────────────────────────────────
+   CURSOR
+────────────────────────────────────────── */
+      const $cur = document.getElementById("cursor");
+      const $ring = document.getElementById("cursor-ring");
+      let cX = 0,
+        cY = 0,
+        rX = 0,
+        rY = 0;
+      document.addEventListener(
+        "mousemove",
+        (e) => {
+          cX = e.clientX;
+          cY = e.clientY;
+        },
+        { passive: true },
+      );
+      (function animCur() {
+        rX += (cX - rX) * 0.12;
+        rY += (cY - rY) * 0.12;
+        $cur.style.cssText = `left:${cX}px;top:${cY}px`;
+        $ring.style.cssText = `left:${rX}px;top:${rY}px`;
+        requestAnimationFrame(animCur);
+      })();
 
-  <!-- Scripts -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/animation.js"></script>
-  <script src="assets/js/imagesloaded.js"></script>
-  <script src="assets/js/custom.js"></script>
+      /* ──────────────────────────────────────────
+   THREE.JS HERO SCENE
+────────────────────────────────────────── */
+      (function initThree() {
+        if (!window.THREE) return;
+        const canvas = document.getElementById("three-canvas");
+        if (!canvas || !canvas.offsetWidth) return;
 
-  <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('success')) {
-    alert("Thanks for contacting us!");
-  } else if (urlParams.get('error')) {
-    alert("Something went wrong. Please try again.");
-  }
-</script>
+        const W = canvas.offsetWidth,
+          H = canvas.offsetHeight;
+        const renderer = new THREE.WebGLRenderer({
+          canvas,
+          alpha: true,
+          antialias: true,
+        });
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        renderer.setSize(W, H);
 
-  <script>
-  // Acc
-    $(document).on("click", ".naccs .menu div", function() {
-      var numberIndex = $(this).index();
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(52, W / H, 0.1, 1000);
+        camera.position.z = 4.2;
 
-      if (!$(this).is("active")) {
-          $(".naccs .menu div").removeClass("active");
-          $(".naccs ul li").removeClass("active");
+        /* torus knot */
+        const knot = new THREE.Mesh(
+          new THREE.TorusKnotGeometry(1, 0.32, 160, 16, 2, 3),
+          new THREE.MeshBasicMaterial({
+            color: 0xe8621a,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.22,
+          }),
+        );
+        scene.add(knot);
 
-          $(this).addClass("active");
-          $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+        /* outer icosphere */
+        const sphere = new THREE.Mesh(
+          new THREE.IcosahedronGeometry(1.9, 2),
+          new THREE.MeshBasicMaterial({
+            color: 0xf5a623,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.06,
+          }),
+        );
+        scene.add(sphere);
 
-          var listItemHeight = $(".naccs ul")
-            .find("li:eq(" + numberIndex + ")")
-            .innerHeight();
-          $(".naccs ul").height(listItemHeight + "px");
+        /* particles */
+        const N = 1600;
+        const pPos = new Float32Array(N * 3),
+          pCol = new Float32Array(N * 3);
+        const pal = [
+          new THREE.Color("#F5A623"),
+          new THREE.Color("#E8621A"),
+          new THREE.Color("#C0392B"),
+          new THREE.Color("#ff9455"),
+          new THREE.Color("#fff"),
+        ];
+        for (let i = 0; i < N; i++) {
+          const phi = Math.acos(-1 + (2 * i) / N);
+          const theta = Math.sqrt(N * Math.PI) * phi;
+          const r = 2.1 + Math.random() * 0.8;
+          pPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+          pPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+          pPos[i * 3 + 2] = r * Math.cos(phi);
+          const c = pal[Math.floor(Math.random() * pal.length)];
+          pCol[i * 3] = c.r;
+          pCol[i * 3 + 1] = c.g;
+          pCol[i * 3 + 2] = c.b;
         }
-    });
-  </script>
-  
- 
-</body>
+        const pg = new THREE.BufferGeometry();
+        pg.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
+        pg.setAttribute("color", new THREE.BufferAttribute(pCol, 3));
+        scene.add(
+          new THREE.Points(
+            pg,
+            new THREE.PointsMaterial({
+              size: 0.018,
+              vertexColors: true,
+              transparent: true,
+              opacity: 0.75,
+              sizeAttenuation: true,
+            }),
+          ),
+        );
+
+        /* orbit rings */
+        [0, 72, 144].forEach((deg, i) => {
+          const ring = new THREE.Mesh(
+            new THREE.TorusGeometry(1.7 + i * 0.12, 0.004, 8, 100),
+            new THREE.MeshBasicMaterial({
+              color: i === 0 ? 0xf5a623 : 0xe8621a,
+              transparent: true,
+              opacity: 0.18,
+            }),
+          );
+          ring.rotation.y = (deg * Math.PI) / 180;
+          ring.rotation.x = Math.PI / (3 + i);
+          scene.add(ring);
+        });
+
+        let mx = 0,
+          my = 0,
+          tx = 0,
+          ty = 0,
+          tick = 0;
+        document.addEventListener(
+          "mousemove",
+          (e) => {
+            mx = (e.clientX / innerWidth - 0.5) * 2;
+            my = (e.clientY / innerHeight - 0.5) * 2;
+          },
+          { passive: true },
+        );
+
+        (function animate() {
+          requestAnimationFrame(animate);
+          tick += 0.004;
+          tx += (mx * 0.22 - tx) * 0.04;
+          ty += (my * 0.15 - ty) * 0.04;
+          knot.rotation.x = tick * 0.4 + ty * 0.3;
+          knot.rotation.y = tick * 0.6 + tx;
+          sphere.rotation.y = tick * 0.18 + tx * 0.4;
+          sphere.rotation.z = tick * 0.06;
+          renderer.render(scene, camera);
+        })();
+
+        window.addEventListener("resize", () => {
+          const W2 = canvas.offsetWidth,
+            H2 = canvas.offsetHeight;
+          if (!W2 || !H2) return;
+          renderer.setSize(W2, H2);
+          camera.aspect = W2 / H2;
+          camera.updateProjectionMatrix();
+        });
+      })();
+
+      /* ──────────────────────────────────────────
+   GSAP — main entry point
+────────────────────────────────────────── */
+      function bootGSAP() {
+        if (!window.gsap) {
+          setTimeout(bootGSAP, 80);
+          return;
+        }
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ── scroll progress ── */
+        gsap.to("#progress-bar", {
+          width: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: "body",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.35,
+          },
+        });
+
+        /* ── header class ── */
+        ScrollTrigger.create({
+          start: 80,
+          onEnter: () =>
+            document.getElementById("site-header").classList.add("scrolled"),
+          onLeaveBack: () =>
+            document.getElementById("site-header").classList.remove("scrolled"),
+        });
+
+        /* ── preloader → hero reveal ── */
+        const loaderTl = gsap.timeline({ onComplete: revealHero });
+        loaderTl
+          .to("#loader-fill", {
+            width: "100%",
+            duration: 1.1,
+            ease: "power3.inOut",
+          })
+          .to(
+            "#loader-count",
+            {
+              textContent: 100,
+              duration: 1.1,
+              snap: { textContent: 1 },
+              ease: "power2.inOut",
+              onUpdate() {
+                document.getElementById("loader-count").textContent =
+                  Math.round(+this.targets()[0].textContent) + "%";
+              },
+            },
+            "<",
+          )
+          .to("#loader", {
+            yPercent: -100,
+            duration: 0.85,
+            ease: "power4.inOut",
+            delay: 0.18,
+          })
+          .to("#site-header", { opacity: 1, duration: 0.5 }, "-=.3");
+
+        function revealHero() {
+          gsap
+            .timeline()
+            .to("#hero-eyebrow", {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: "power3.out",
+            })
+            .to(
+              "#hero-h1",
+              {
+                opacity: 1,
+                clipPath: "inset(0 0 0% 0)",
+                duration: 0.9,
+                ease: "power4.out",
+              },
+              "-=.35",
+            )
+            .to(
+              "#hero-sub",
+              { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+              "-=.45",
+            )
+            .to(
+              "#hero-ctas",
+              { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" },
+              "-=.4",
+            )
+            .to(
+              "#hero-stats",
+              { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+              "-=.35",
+            )
+            .to(
+              "#hero-right",
+              { opacity: 1, duration: 0.9, ease: "power3.out" },
+              "-=.8",
+            )
+            .to("#scroll-hint", { opacity: 1, duration: 0.6 }, "-=.2");
+          /* counters */
+          setTimeout(runCounters, 800);
+        }
+
+        /* ── hero parallax ── */
+        gsap.to("#hero-left", {
+          yPercent: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+        gsap.to("#hero-right", {
+          yPercent: -6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.4,
+          },
+        });
+        gsap.to(".glow-1", {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 2,
+          },
+        });
+
+        /* ── services pinned horizontal ── */
+        const svcTrack = document.getElementById("svc-track");
+        if (svcTrack) {
+          const dist = svcTrack.scrollWidth - window.innerWidth + 120;
+          if (dist > 0) {
+            gsap.to(svcTrack, {
+              x: -dist,
+              ease: "none",
+              scrollTrigger: {
+                trigger: "#services",
+                start: "top top",
+                end: `+=${dist}`,
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1,
+              },
+            });
+          }
+        }
+
+        /* ── scroll reveal (.sa) ── */
+        gsap.utils.toArray(".sa").forEach((el) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 36 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 88%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          );
+        });
+
+        /* ── portfolio stagger ── */
+        gsap.utils.toArray(".port-item").forEach((el, i) => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 28, scale: 0.97 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.65,
+              delay: i * 0.04,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 90%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          );
+        });
+      }
+      bootGSAP();
+
+      /* ──────────────────────────────────────────
+   COUNTERS
+────────────────────────────────────────── */
+      function runCounters() {
+        document.querySelectorAll("[data-target],[data-val]").forEach((el) => {
+          const v = parseInt(el.dataset.target || el.dataset.val);
+          if (isNaN(v)) return;
+          const dur = 1400;
+          let s = null;
+          (function step(ts) {
+            if (!s) s = ts;
+            const p = Math.min((ts - s) / dur, 1),
+              e = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.floor(e * v);
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = v;
+          })(performance.now());
+        });
+      }
+
+      /* also trigger counters on scroll for about section */
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              const v = parseInt(e.target.dataset.val);
+              if (!isNaN(v)) {
+                runCounterOne(e.target, v);
+              }
+            }
+          });
+        },
+        { threshold: 0.5 },
+      ).observe ||
+        document.querySelectorAll("[data-val]").forEach((el) => {
+          new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  runCounterOne(e.target, parseInt(e.target.dataset.val || 0));
+                }
+              });
+            },
+            { threshold: 0.5 },
+          ).observe(el);
+        });
+
+      function runCounterOne(el, v) {
+        if (el._counted) return;
+        el._counted = true;
+        const dur = 1400;
+        let s = null;
+        (function step(ts) {
+          if (!s) s = ts;
+          const p = Math.min((ts - s) / dur, 1),
+            ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.floor(ease * v);
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = v;
+        })(performance.now());
+      }
+      document.querySelectorAll("[data-val]").forEach((el) => {
+        new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting)
+                runCounterOne(e.target, parseInt(e.target.dataset.val || 0));
+            });
+          },
+          { threshold: 0.5 },
+        ).observe(el);
+      });
+
+      /* ──────────────────────────────────────────
+   HEADER SCROLL FALLBACK
+────────────────────────────────────────── */
+      const hdr = document.getElementById("site-header");
+      window.addEventListener(
+        "scroll",
+        () => hdr.classList.toggle("scrolled", scrollY > 60),
+        { passive: true },
+      );
+
+      /* ──────────────────────────────────────────
+   MOBILE BURGER
+────────────────────────────────────────── */
+      const burger = document.getElementById("burger");
+      const nav = document.getElementById("main-nav");
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("open");
+        nav.classList.toggle("open");
+      });
+      nav.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          burger.classList.remove("open");
+          nav.classList.remove("open");
+        }),
+      );
+
+      /* ──────────────────────────────────────────
+   SMOOTH SCROLL
+────────────────────────────────────────── */
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const target = document.querySelector(a.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            scrollTo({ top: target.offsetTop - 72, behavior: "smooth" });
+          }
+        });
+      });
+
+      /* ──────────────────────────────────────────
+   ACTIVE NAV
+────────────────────────────────────────── */
+      const sections = document.querySelectorAll(
+        'section[id], div[id="services"]',
+      );
+      const navLinks = document.querySelectorAll(".main-nav a");
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              navLinks.forEach((a) => a.classList.remove("active"));
+              const act = document.querySelector(
+                `.main-nav a[href="#${e.target.id}"]`,
+              );
+              if (act) act.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: "-72px 0px 0px 0px" },
+      ).observe ||
+        sections.forEach((s) => {
+          new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  navLinks.forEach((a) => a.classList.remove("active"));
+                  const act = document.querySelector(
+                    `.main-nav a[href="#${s.id}"]`,
+                  );
+                  if (act) act.classList.add("active");
+                }
+              });
+            },
+            { threshold: 0.3, rootMargin: "-72px 0px 0px 0px" },
+          ).observe(s);
+        });
+
+      /* ──────────────────────────────────────────
+   3D TILT — about image
+────────────────────────────────────────── */
+      const tiltCard = document.getElementById("tilt-card");
+      const tiltShine = document.getElementById("tilt-shine");
+      if (tiltCard) {
+        tiltCard.addEventListener("mousemove", (e) => {
+          const r = tiltCard.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5,
+            y = (e.clientY - r.top) / r.height - 0.5;
+          tiltCard.style.transform = `perspective(900px) rotateY(${x * 16}deg) rotateX(${-y * 11}deg) scale(1.025)`;
+          tiltShine.style.background = `radial-gradient(circle at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%,rgba(255,255,255,.09),transparent 60%)`;
+        });
+        tiltCard.addEventListener("mouseleave", () => {
+          tiltCard.style.transform =
+            "perspective(900px) rotateY(0) rotateX(0) scale(1)";
+          tiltShine.style.background =
+            "radial-gradient(circle at 30% 30%,rgba(255,255,255,.06),transparent 60%)";
+        });
+      }
+
+      /* ──────────────────────────────────────────
+   MAGNETIC BUTTONS
+────────────────────────────────────────── */
+      document
+        .querySelectorAll(".btn-primary,.btn-secondary,.btn-grad,.nav-cta a")
+        .forEach((btn) => {
+          btn.addEventListener("mousemove", (e) => {
+            if (!window.gsap) return;
+            const r = btn.getBoundingClientRect();
+            gsap.to(btn, {
+              x: (e.clientX - r.left - r.width / 2) * 0.3,
+              y: (e.clientY - r.top - r.height / 2) * 0.3,
+              duration: 0.3,
+              ease: "power2.out",
+            });
+          });
+          btn.addEventListener("mouseleave", () => {
+            if (!window.gsap) return;
+            gsap.to(btn, {
+              x: 0,
+              y: 0,
+              duration: 0.55,
+              ease: "elastic.out(1,.4)",
+            });
+          });
+        });
+
+      /* ──────────────────────────────────────────
+   SCROLL REVEAL FALLBACK (no GSAP)
+────────────────────────────────────────── */
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -48px 0px" },
+      ).observe ||
+        document.querySelectorAll(".sa").forEach((el) => {
+          new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) e.target.classList.add("in");
+              });
+            },
+            { threshold: 0.1, rootMargin: "0px 0px -48px 0px" },
+          ).observe(el);
+        });
+
+      /* ──────────────────────────────────────────
+   FORM TOAST
+────────────────────────────────────────── */
+      const urlP = new URLSearchParams(location.search);
+      if (urlP.get("success") || urlP.get("error")) {
+        const ok = !!urlP.get("success");
+        const toast = document.createElement("div");
+        toast.className = "toast-msg " + (ok ? "tok" : "terr");
+        toast.textContent = ok
+          ? "✓ Message sent! We'll be in touch soon."
+          : "✗ Something went wrong. Please try again.";
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 5500);
+      }
+    </script>
+  </body>
 </html>
