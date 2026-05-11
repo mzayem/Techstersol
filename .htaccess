@@ -1,12 +1,22 @@
-# Disable directory listing (prevents browsing folders)
+# Enable rewrite engine
 
-Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
 
-# Enable RewriteEngine if supported
+# Allow real files/folders to load normally
 
-<IfModule mod_rewrite.c> RewriteEngine On </IfModule>
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# Allow access only from your domain (Prevents hotlinking)
+# Clean URL → .html (supports folders too)
 
-<IfModule mod_rewrite.c> RewriteCond %{HTTP_REFERER} !^https://(www\.)?techstersol\.com [NC] RewriteRule \.(jpg|jpeg|png|gif|webp|css|js)$ - [F,NC]
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# Redirect .html to clean URL
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ %1 [R=301,L]
+
 </IfModule>
