@@ -1,27 +1,12 @@
-# Disable directory listing
+# Disable directory listing (prevents browsing folders)
 
 Options -Indexes
 
-# Enable Rewrite Engine
+# Enable RewriteEngine if supported
 
-<IfModule mod_rewrite.c>
-RewriteEngine On
+<IfModule mod_rewrite.c> RewriteEngine On </IfModule>
 
-# Remove .html extension from URLs
+# Allow access only from your domain (Prevents hotlinking)
 
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/.]+)$ $1.html [L]
-
-# Internally map /page -> /page.html
-
-RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
-RewriteRule ^ /%1 [R=301,L]
-
-# Hotlink protection
-
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https://(www\.)?techstersol\.com [NC]
-RewriteRule \.(jpg|jpeg|png|gif|webp|css|js)$ - [F,NC]
-
+<IfModule mod_rewrite.c> RewriteCond %{HTTP_REFERER} !^https://(www\.)?techstersol\.com [NC] RewriteRule \.(jpg|jpeg|png|gif|webp|css|js)$ - [F,NC]
 </IfModule>
